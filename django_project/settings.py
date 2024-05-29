@@ -117,3 +117,5 @@ STATICFILES_DIRS=[
     
     os.path.join(BASE_DIR,'blog/static')
 ]
+
+ALLOWED_HOSTS=['railways-production-0146.up.railway.app',]
