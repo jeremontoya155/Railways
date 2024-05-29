@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #Agrego las aplicaicones que genere
+    'whitenoise.runserver_notstatic',
     'home',
     'blog',
 ]
@@ -125,5 +126,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 ALLOWED_HOSTS=['railways-production-0146.up.railway.app',]
