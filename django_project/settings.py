@@ -71,6 +71,7 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+print()
 DATABASES = {
     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
@@ -135,5 +136,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 ALLOWED_HOSTS=['127.0.0.1','railways-production-0146.up.railway.app']
 
 CSRF_TRUSTED_ORIGIN=['http://','railways-production-0146.up.railway.app']
+CSRF_TRUSTED_ORIGINS = [
+    'https://railways-production-0146.up.railway.app'
+]
 
     
