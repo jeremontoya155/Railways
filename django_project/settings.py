@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'home',
     'blog',
+    'excel_app',
     'tasks',
     'rest_framework',
 ]

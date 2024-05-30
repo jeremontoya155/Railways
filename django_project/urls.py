@@ -22,5 +22,6 @@ urlpatterns = [
     path('articles/', include('blog.urls')),
     path('api/', include('tasks.urls')),
     path('', include('home.urls')),
+    path('excel/', include('excel_app.urls')),
     
 ]
