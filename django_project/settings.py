@@ -9,6 +9,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Load environment variables from a .env file if present
 load_dotenv()
 
+LANGUAGE_CODE = 'es'
+
+USE_I18N = True
+
+USE_L10N = True
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
