@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Detalle del Archivo{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2>Detalle del Archivo</h2>
+        <h3>{{ upload.usuario }}</h3>
+        <p>Fecha: {{ upload.fecha }}</p>
+        <p>Laboratorio: {{ upload.laboratorio }}</p>
+        <p>CUIT: {{ upload.cuit }}</p>
+        <p>Total vendido por cantidad: {{ total_cantidad }}</p>
+        <p>Total vendido por Imp. Total: {{ total_imp_total }}</p>
+        <p>Total vendido por Costo: {{ total_costo }}</p>
+        <input type="text" id="filterInput" placeholder="Filtrar por producto...">
+        <div class="table-scroll">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        {% for col in dataframe.columns %}
+                            <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    {% for index, row in dataframe.iterrows %}
+                        <tr>
+                            {% for value in row %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var input = document.getElementById("filterInput");
+        input.addEventListener("input", function() {
+            var filter = input.value.toUpperCase();
+            var table = document.getElementById("myTable");
+            var rows = table.getElementsByTagName("tr");
+            for (var i = 0; i < rows.length; i++) {
+                var cells = rows[i].getElementsByTagName("td");
+                var found = false;
+                for (var j = 0; j < cells.length; j++) {
+                    var cell = cells[j];
+                    if (cell) {
+                        var textValue = cell.textContent || cell.innerText;
+                        if (textValue.toUpperCase().indexOf(filter) > -1) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+                if (found) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}
