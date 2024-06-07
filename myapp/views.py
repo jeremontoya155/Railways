@@ -4,6 +4,7 @@ from .forms import UploadFileForm
 from .models import Upload
 import json
 
+
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
