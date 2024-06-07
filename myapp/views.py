@@ -4,12 +4,6 @@ from .forms import UploadFileForm
 from .models import Upload
 import json
 
-from django.shortcuts import render, redirect
-from .forms import UploadFileForm
-from .models import Upload
-import pandas as pd
-import json
-
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
@@ -35,9 +29,7 @@ def upload_file(request):
             return redirect('file_list')
     else:
         form = UploadFileForm()
-    return render(request, 'upload.html', {'form': form})
-
-
+    return render(request, 'upload_form.html', {'form': form})
 
 def file_list(request):
     uploads = Upload.objects.all()

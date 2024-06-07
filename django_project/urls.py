@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('excel/', include('excel_app.urls')),
     path('myapp/', include('myapp.urls')),  # Incluir las rutas de myapp
+    
 ]

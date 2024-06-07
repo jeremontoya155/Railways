@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Subir Archivo{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Subir Archivo</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.usuario.label_tag }}
+            {{ form.usuario }}
+        </div>
+        <div class="form-group">
+            {{ form.fecha.label_tag }}
+            {{ form.fecha }}
+        </div>
+        <div class="form-group">
+            {{ form.laboratorio.label_tag }}
+            {{ form.laboratorio }}
+        </div>
+        <div class="form-group">
+            {{ form.cuit.label_tag }}
+            {{ form.cuit }}
+        </div>
+        <div class="form-group">
+            {{ form.file.label_tag }}
+            {{ form.file }}
+        </div>
+        <button type="submit" class="btn btn-primary">Subir</button>
+    </form>
+</div>
+{% endblock %}
