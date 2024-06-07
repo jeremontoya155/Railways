@@ -1,60 +1,52 @@
 {% extends 'base.html' %}
 {% load static %}
-
-
 {% block title %}Detalle del Archivo{% endblock %}
-
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/files.css' %}">
+{% endblock %}
 {% block content %}
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Mi Aplicación</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#inicio">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contacto</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <form id="logoutForm" method="post" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-outline-danger my-2 my-sm-0" style="margin-top: 10px;">Cerrar sesión</button>
-                        </form>
-                    </li>
-                    {% endif %}
-                    
-                </ul>
-            </div>
-        </div>
-    </nav> -->
     <div class="container mt-5">
         <h2>Archivos Subidos</h2>
+        <form>
+            <div class="filter-container row">
+                <div class="col-3">
+                    <input type="text" id="usuario" name="usuario" placeholder="Ingrese usuario">
+                </div>
+                <div class="col-3">
+                    <input type="date" id="fecha" name="fecha" placeholder="Seleccione fecha">
+                </div>
+                <div class="col-2">
+                    <input type="text" id="laboratorio" name="laboratorio" placeholder="Ingrese laboratorio">
+                </div>
+                <div class="col-2">
+                    <input type="text" id="cuit" name="cuit" placeholder="Ingrese CUIT">
+                </div>
+                <div class="col-2">
+                    <input type="text" id="estado" name="estado" placeholder="Ingrese estado">                
+                </div>
+            </div>
+        </form>
         <div class="row">
             {% for upload in uploads %}
-            <div class="justify-center col-6 col-md-12 mt-2">
+            <div class=" col-6 col-md-12 mt-2">
                 <div class="card">
                     <div class="card-body">
-                        <div class="columna">
-                            <h4 class="card-title">{{ upload.usuario }}</h4>
+                        <div class="columna usuario">
+                            <h4 class="card-title ">{{ upload.usuario }}</h4>
                         </div>
                         <div class="columna">
-                            <p class="card-text">Fecha:</p>
+                            <!-- <p class="card-text">Fecha:</p> -->
                             <p class="card-text">{{ upload.fecha }}</p>
                         </div>
                         <div class="columna">
-                            <p class="card-text">Laboratorio:</p>
-                                <p class="card-text">{{ upload.laboratorio }}</p>
-                            </div>
-                            <div class="columna">
-                            <p class="card-text">CUIT:</p>
-                            <p class="card-text">{{ upload.cuit }}</p>
+                            <!-- <p class="card-text">Laboratorio:</p> -->
+                            <p class="card-text strong ">{{ upload.laboratorio }}</p>
                         </div>
                         <div class="columna">
+                            <!-- <p class="card-text">CUIT:</p> -->
+                            <p class="card-text">{{ upload.cuit }}</p>
+                        </div>
+                        <div class="columna ">
                             <a href="{% url 'file_detail' upload.pk %}" class="btn btn-primary">Abrir</a>
                         </div>
                     </div>
