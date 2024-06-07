@@ -2,7 +2,7 @@
 .card-body{
     display: flex; 
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-flow: row wrap;
 }   
 .columna{ 
@@ -10,5 +10,12 @@
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-
 }
+
+.usuario{
+    /* margin-bottom: 10px; */
+}
+.strong{
+    font-weight: 600;
+}
+
