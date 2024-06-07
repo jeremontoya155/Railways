@@ -1,0 +1,57 @@
+.subida{
+    display: flex; 
+    align-items:center;
+}
+.botonSubir{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    .btn{
+        width:190px; 
+        background-color: #1291aa;
+        border-color: #1291aa;
+    }
+
+    .btn:hover{
+        background-color: #e7a319;
+        color: #252525;
+    }
+}
+
+.form { 
+    margin-top:1em;
+    padding: 1em;
+    padding-top: 2em;
+    padding-bottom:2em;
+    background-color: #c1c1c1;
+    border-radius: 1em;
+
+    box-shadow: 5px 10px 20px grey;
+}
+.filter-container {
+    width:100%;
+    align-items:center;
+    justify-content: space-between;
+}
+  
+.filter-container label {
+font-weight: bold;
+}
+
+.filter-container input[type="text"] {
+width: 100%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+.filter-container input[type="date"] {
+width: 100%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+  /* Añade más estilos según sea necesario */
+  
