@@ -4,7 +4,6 @@ from .forms import UploadFileForm
 from .models import Upload
 import json
 
-
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
@@ -42,10 +41,16 @@ def file_detail(request, pk):
     # Convertir el JSON almacenado en el campo 'file' de Upload de vuelta a DataFrame
     df = pd.DataFrame(json.loads(upload.file))
     
-    # Calcular las sumas, comprobando si las columnas existen
-    total_cantidad = df['Cantidad'].sum() if 'Cantidad' in df.columns else 0
-    total_imp_total = df['Imp. Total'].sum() if 'Imp. Total' in df.columns else 0
-    total_costo = df['Costo'].sum() if 'Costo' in df.columns else 0
+    # Convertir las columnas relevantes a enteros sin decimales
+    integer_columns = ['Cantidad', 'Imp. Total', 'Costo']
+    for col in integer_columns:
+        if col in df.columns:
+            df[col] = df[col].astype(int)
+
+    # Calcular las sumas
+    total_cantidad = df['Cantidad'].sum()
+    total_imp_total = df['Imp. Total'].sum()
+    total_costo = df['Costo'].sum()
     
     return render(request, 'file_detail.html', {
         'upload': upload,

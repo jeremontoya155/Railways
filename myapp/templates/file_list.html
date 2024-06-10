@@ -1,61 +1,47 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block title %}Detalle del Archivo{% endblock %}
-{% block head %}
-    <link rel="stylesheet" href="{% static 'css/files.css' %}">
-{% endblock %}
-{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivos Subidos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Mi Aplicación</a>
+            {% if user.is_authenticated %}
+            <form id="logoutForm" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger" style="margin-top: 10px;">Cerrar sesión</button>
+            </form>
+        {% endif %}
+        
+        </div>
+    </nav>
+
     <div class="container mt-5">
         <h2>Archivos Subidos</h2>
-        <form>
-            <div class="filter-container row">
-                <div class="col-3">
-                    <input type="text" id="usuario" name="usuario" placeholder="Ingrese usuario">
-                </div>
-                <div class="col-3">
-                    <input type="date" id="fecha" name="fecha" placeholder="Seleccione fecha">
-                </div>
-                <div class="col-2">
-                    <input type="text" id="laboratorio" name="laboratorio" placeholder="Ingrese laboratorio">
-                </div>
-                <div class="col-2">
-                    <input type="text" id="cuit" name="cuit" placeholder="Ingrese CUIT">
-                </div>
-                <div class="col-2">
-                    <input type="text" id="estado" name="estado" placeholder="Ingrese estado">                
-                </div>
-            </div>
-        </form>
         <div class="row">
             {% for upload in uploads %}
-            <div class=" col-6 col-md-12 mt-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="columna usuario">
-                            <h4 class="card-title ">{{ upload.usuario }}</h4>
-                        </div>
-                        <div class="columna">
-                            <!-- <p class="card-text">Fecha:</p> -->
-                            <p class="card-text">{{ upload.fecha }}</p>
-                        </div>
-                        <div class="columna">
-                            <!-- <p class="card-text">Laboratorio:</p> -->
-                            <p class="card-text strong ">{{ upload.laboratorio }}</p>
-                        </div>
-                        <div class="columna">
-                            <!-- <p class="card-text">CUIT:</p> -->
-                            <p class="card-text">{{ upload.cuit }}</p>
-                        </div>
-                        <div class="columna ">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ upload.usuario }}</h5>
+                            <p class="card-text">Fecha: {{ upload.fecha }}</p>
+                            <p class="card-text">Laboratorio: {{ upload.laboratorio }}</p>
+                            <p class="card-text">CUIT: {{ upload.cuit }}</p>
                             <a href="{% url 'file_detail' upload.pk %}" class="btn btn-primary">Abrir</a>
                         </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>
-    {% endblock %}
-{% block scripts %}
-    <script src="{% static 'js/prueba.js' %}"></script>
-{% endblock %}
+</body>
+</html>
+
+<script src="{% static 'js/prueba.js' %}"></script>
