@@ -9,20 +9,30 @@
         <h2>Archivos Subidos</h2>
         <form>
             <div class="filter-container row">
-                <div class="col-3">
+                <div class="col-2">
                     <input type="text" id="usuario" name="usuario" placeholder="Ingrese usuario">
                 </div>
                 <div class="col-3">
-                    <input type="date" id="fecha" name="fecha" placeholder="Seleccione fecha">
-                </div>
-                <div class="col-2">
-                    <input type="text" id="laboratorio" name="laboratorio" placeholder="Ingrese laboratorio">
-                </div>
-                <div class="col-2">
                     <input type="text" id="cuit" name="cuit" placeholder="Ingrese CUIT">
                 </div>
                 <div class="col-2">
-                    <input type="text" id="estado" name="estado" placeholder="Ingrese estado">                
+                    <input type="date" id="fecha" name="fecha" placeholder="Seleccione fecha">
+                </div>
+                <div class="col-3">
+                    <select id="laboratorio" name="laboratorio">
+                        <option value="">Seleccione laboratorio</option>
+                        <!-- Aquí puedes agregar opciones adicionales más adelante -->
+                    </select>
+                </div>
+                <div class="col-2">
+
+                    <select id="estado" name="estado">
+                        <option value="">Seleccione estado</option>
+                        <option value="completo">Completo</option>
+                        <option value="incompleto">Incompleto</option>
+                        <option value="parcial">Parcial</option>
+                        <!-- Agrega más opciones de estado si es necesario -->
+                    </select>
                 </div>
             </div>
         </form>
@@ -30,23 +40,23 @@
             {% for upload in uploads %}
             <div class=" col-6 col-md-12 mt-2">
                 <div class="card">
-                    <div class="card-body">
-                        <div class="columna usuario">
+                    <div class="card-body row">
+                        <div class="col-3 usuario columna">
                             <h4 class="card-title ">{{ upload.usuario }}</h4>
                         </div>
-                        <div class="columna">
+                        <div class="col-3 columna">
                             <!-- <p class="card-text">Fecha:</p> -->
                             <p class="card-text">{{ upload.fecha }}</p>
                         </div>
-                        <div class="columna">
+                        <div class="col-2 columna">
                             <!-- <p class="card-text">Laboratorio:</p> -->
                             <p class="card-text strong ">{{ upload.laboratorio }}</p>
                         </div>
-                        <div class="columna">
+                        <div class="col-2 columna">
                             <!-- <p class="card-text">CUIT:</p> -->
                             <p class="card-text">{{ upload.cuit }}</p>
                         </div>
-                        <div class="columna ">
+                        <div class="col-2 columna">
                             <a href="{% url 'file_detail' upload.pk %}" class="btn btn-primary">Abrir</a>
                         </div>
                     </div>

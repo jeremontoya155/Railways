@@ -3,14 +3,35 @@
 
 {% block content %}
     <div class="container mt-5">
-        <h2>Detalle del Archivo</h2>
-        <h3>{{ upload.usuario }}</h3>
-        <p>Fecha: {{ upload.fecha }}</p>
-        <p>Laboratorio: {{ upload.laboratorio }}</p>
-        <p>CUIT: {{ upload.cuit }}</p>
-        <p>Total vendido por cantidad: {{ total_cantidad }}</p>
-        <p>Total vendido por Imp. Total: {{ total_imp_total }}</p>
-        <p>Total vendido por Costo: {{ total_costo }}</p>
+        <div class="datos">
+            <h2>Detalle del Archivo</h2>
+            <div class="row  text-center table-bordered">
+                <div class="col-6">
+                    <h3 >{{ upload.usuario }}</h3>
+                </div>
+                <div class="col-6">
+                    <p><strong>{{ upload.fecha }}</strong></p>
+                </div>
+                <div class="col-6">
+                    <p><strong>{{ upload.laboratorio }}</strong></p>
+                </div>
+                <div class="col-6">
+                    <p>{{ upload.cuit }}</p>
+                </div>
+                <div class="col-4 ">
+                    <p>Total vendido por cantidad:</p>
+                    <p><strong>{{ total_cantidad }}</strong></p>
+                </div>
+                <div class="col-4">
+                    <p>Total vendido por Imp. Total: </p>
+                    <p><strong>{{ total_imp_total }}</strong></p>
+                </div>
+                <div class="col-4">
+                    <p>Total vendido por Costo: </p>
+                    <p><strong>{{ total_costo }}</strong></p>
+                </div>
+            </div>
+        </div>
         <input type="text" id="filterInput" placeholder="Filtrar por producto...">
         <div class="table-scroll">
             <table class="table table-bordered">

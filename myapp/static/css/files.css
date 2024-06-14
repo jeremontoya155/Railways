@@ -11,11 +11,13 @@
     align-items: center;
     justify-content: center;
 }
-
-.usuario{
-    /* margin-bottom: 10px; */
-}
 .strong{
     font-weight: 600;
+}
+.filter-container{
+    display:flex;
+    flex-flow: row wrap;
+    align-items:center;
+    justify-content: space-between;
 }
 
