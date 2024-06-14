@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'rest_framework', 
     'myapp',
     'crispy_forms',  # Para facilitar el uso de Bootstrap en formularios
-    'django_bootstrap5', ]
+    'django_bootstrap5', 
+    'myapp.templatetags',]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

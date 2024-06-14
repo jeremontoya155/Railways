@@ -1,0 +1,30 @@
+[
+    {
+        "ID": 28287,
+        "Fecha": "2024-05-10",
+        "Sucursal": 999,
+        "TipoComprobante": "FC",
+        "Letra": "A",
+        "Numero": 8840021,
+        "SKU": 1004900401,
+        "Descripcion": "RITALINA  comp.x  30",
+        "Proveedor_CUIT": "30-53888062-7",
+        "Cantidad": 1,
+        "PrecioUnitarioNeto": 14772.05,
+        "ProcentajeIVA": 0
+    },
+    {
+        "ID": 28293,
+        "Fecha": "2024-05-10",
+        "Sucursal": 999,
+        "TipoComprobante": "FC",
+        "Letra": "A",
+        "Numero": 7475675,
+        "SKU": 1060400049,
+        "Descripcion": "TORGYN  DUO  caps.bland.vag.x  7",
+        "Proveedor_CUIT": "30-53975649-0",
+        "Cantidad": 50,
+        "PrecioUnitarioNeto": 8919.22,
+        "ProcentajeIVA": 0
+    }
+]
