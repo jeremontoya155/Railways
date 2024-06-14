@@ -2,37 +2,37 @@
 {% block title %}Detalle del Archivo{% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h2>Detalle del Archivo</h2>
-        <h3>{{ upload.usuario }}</h3>
-        <p>Fecha: {{ upload.fecha }}</p>
-        <p>Laboratorio: {{ upload.laboratorio }}</p>
-        <p>CUIT: {{ upload.cuit }}</p>
-        <p>Total vendido por cantidad: {{ total_cantidad }}</p>
-        <p>Total vendido por Imp. Total: {{ total_imp_total }}</p>
-        <p>Total vendido por Costo: {{ total_costo }}</p>
-        <input type="text" id="filterInput" placeholder="Filtrar por producto...">
-        <div class="table-scroll">
-            <table class="table table-bordered">
-                <thead class="thead-dark">
+<div class="container mt-5">
+    <h2>Detalle del Archivo</h2>
+    <h3>{{ upload.usuario }}</h3>
+    <p>Fecha: {{ upload.fecha }}</p>
+    <p>Laboratorio: {{ upload.laboratorio }}</p>
+    <p>CUIT: {{ upload.cuit }}</p>
+    <p>Total vendido por cantidad: {{ total_cantidad }}</p>
+    <p>Total vendido por Imp. Total: {{ total_imp_total }}</p>
+    <p>Total vendido por Costo: {{ total_costo }}</p>
+    <input type="text" id="filterInput" placeholder="Filtrar por producto...">
+    <div class="table-scroll">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    {% for col in dataframe.columns %}
+                        <th>{{ col }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody id="myTable">
+                {% for index, row in dataframe.iterrows %}
                     <tr>
-                        {% for col in dataframe.columns %}
-                            <th>{{ col }}</th>
+                        {% for value in row %}
+                            <td>{{ value }}</td>
                         {% endfor %}
                     </tr>
-                </thead>
-                <tbody id="myTable">
-                    {% for index, row in dataframe.iterrows %}
-                        <tr>
-                            {% for value in row %}
-                                <td>{{ value }}</td>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
