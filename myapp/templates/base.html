@@ -11,6 +11,9 @@
     {% block head %}
     {% endblock %}
 </head>
+    
+{% block style %}
+{% endblock %}
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -23,7 +26,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'upload_file' %}">Inicio</a>
                     </li>
-                    <!-- Botón para ir a la sección de contacto -->
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'file_list' %}">Archivos subidos</a>
                     </li>
@@ -35,9 +38,6 @@
                         </form>
                     </li>
                     {% endif %}
-                    <!-- Botón para ir a la sección de inicio -->
-                    
-                    <!-- Agrega más botones según sea necesario -->
                 </ul>
             </div>
         </div>

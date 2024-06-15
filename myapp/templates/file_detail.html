@@ -1,38 +1,125 @@
 {% extends 'base.html' %}
 {% block title %}Detalle del Archivo{% endblock %}
 
+{% block style %}
+<style>
+        body{
+            height: 120vh;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); /* Tres columnas de igual ancho */
+            gap: 10px; /* Espacio entre los elementos */
+        }
+
+        .item1 {
+            grid-column: span 4; /* Ocupar dos columnas */
+        }
+
+        .item2 {
+            grid-column: span 2; /* Ocupar una columna */
+        }
+
+        .item3, .item4 {
+            grid-column: span 3; /* Ocupar una columna cada uno */
+        }
+
+        .item5, .item6, .item7 {
+            grid-column: span 2; /* Ocupar una columna cada uno */
+        }
+
+        .grid-item {
+            background-color: #ccc;
+            border: 1px solid #000;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .capsula{
+            position: relative; 
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .capsula .label{
+            position: absolute;
+            top:0; 
+            left:5px; 
+        }
+        .capsula .numeros{
+            padding-top:20px;
+        }
+        .filtro{
+            width:50%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display:flex;
+            align-items:center;
+            justify-content: space-around;
+
+            border: 1px solid grey;
+            padding: 10px;
+        }
+        .input {
+        border: none;
+        outline: none;
+        border-radius: 15px;
+        padding: .5em;
+        min-height:2.4em;
+        background-color: #ccc;
+        box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+        transition: 300ms ease-in-out;
+        }
+
+        .input:focus {
+        background-color: white;
+        transform: scale(1.05);
+        box-shadow: 13px 13px 100px #969696,
+                    -13px -13px 100px #ffffff;
+        }
+    </style>
+{% endblock %}
 {% block content %}
     <div class="container mt-5">
+        
         <div class="datos">
-            <h2>Detalle del Archivo</h2>
-            <div class="row  text-center table-bordered">
-                <div class="col-6">
+            <h2>Nota de pedido</h2>
+            <div class="grid-container">
+                <div class="grid-item item1 capsula">
+                    <p class="label">Usuario</p>
                     <h3 >{{ upload.usuario }}</h3>
                 </div>
-                <div class="col-6">
+                <div class="grid-item item2 capsula">
+                    <p class="label">Fecha</p>
                     <p><strong>{{ upload.fecha }}</strong></p>
                 </div>
-                <div class="col-6">
+                <div class="grid-item item3 capsula">
+                    
+                    <p class="label">Laboratorio</p>
                     <p><strong>{{ upload.laboratorio }}</strong></p>
                 </div>
-                <div class="col-6">
+                <div class="grid-item item4 capsula">
+                    <p class="label">Cuit</p>
                     <p>{{ upload.cuit }}</p>
                 </div>
-                <div class="col-4 ">
-                    <p>Total vendido por cantidad:</p>
-                    <p><strong>{{ total_cantidad }}</strong></p>
+                <div class="grid-item item5 capsula">
+                    <p class="label">Total vendido por cantidad:</p>
+                    <p class="numeros"><strong>{{ total_cantidad }}</strong></p>
                 </div>
-                <div class="col-4">
-                    <p>Total vendido por Imp. Total: </p>
-                    <p><strong>{{ total_imp_total }}</strong></p>
+                <div class="grid-item item6 capsula">
+                    <p class="label">Total vendido por Imp. Total: </p>
+                    <p class="numeros"> <strong>$   {{ total_imp_total }}</strong></p>
                 </div>
-                <div class="col-4">
-                    <p>Total vendido por Costo: </p>
-                    <p><strong>{{ total_costo }}</strong></p>
-                </div>
+                <div class="grid-item item7 capsula">
+                    <p class="label">Total vendido por Costo: </p>
+                    <p class="numeros"> <strong>$   {{ total_costo  }}</strong></p></div>
             </div>
+            
         </div>
-        <input type="text" id="filterInput" placeholder="Filtrar por producto...">
+        <div class="filtro">
+            <p>Busca por producto:</p>
+            <input type="text" id="filterInput" class="input" placeholder="Filtrar por producto...">
+        </div>
         <div class="table-scroll">
             <table class="table table-bordered">
                 <thead class="thead-dark">
